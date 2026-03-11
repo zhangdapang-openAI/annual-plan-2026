@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张大胖 · 2026年度目标规划</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>2026 年度计划 | 张大胖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,30 +13,36 @@
         }
 
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --highlight: #e94560;
-            --gold: #ffd700;
-            --text: #eaeaea;
-            --text-muted: #a0a0a0;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --bg: #0a0a0f;
+            --bg-elevated: #12121a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --accent: #22c55e;
+            --accent-glow: rgba(34, 197, 94, 0.3);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --danger: #ef4444;
+            --gradient-1: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            --gradient-2: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            --gradient-3: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
         }
 
         body {
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary);
-            color: var(--text);
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 14px;
+            min-height: 100vh;
         }
 
-        /* 背景动画 */
-        .bg-animation {
+        /* 背景光效 */
+        .bg-glow {
             position: fixed;
             top: 0;
             left: 0;
@@ -47,7 +52,7 @@
             overflow: hidden;
         }
 
-        .bg-animation::before {
+        .bg-glow::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -55,785 +60,903 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(233, 69, 96, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(79, 172, 254, 0.1) 0%, transparent 40%);
-            animation: bgMove 20s ease-in-out infinite;
+                radial-gradient(circle at 20% 30%, rgba(34, 197, 94, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            animation: glowMove 15s ease-in-out infinite;
         }
 
-        @keyframes bgMove {
+        @keyframes glowMove {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
+            33% { transform: translate(2%, -2%) rotate(120deg); }
+            66% { transform: translate(-1%, 1%) rotate(240deg); }
         }
 
-        /* 导航 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        nav .container {
-            max-width: 1400px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* 顶部概览 */
+        .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo {
-            font-size: 24px;
+        .header-left h1 {
+            font-size: 42px;
             font-weight: 700;
-            background: var(--gradient-1);
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -1px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
+        .header-left p {
             color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
+            font-size: 16px;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--highlight);
-            transition: width 0.3s;
+        .header-right {
+            text-align: right;
         }
 
-        .nav-links a:hover {
-            color: var(--text);
+        .year-progress-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 32px;
+            min-width: 220px;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* 主体容器 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
-
-        /* Hero区域 */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 72px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-        }
-
-        .hero-content .subtitle {
-            font-size: 24px;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 60px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* 个人介绍 */
-        .profile-section {
-            padding: 120px 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(22, 33, 62, 0.5) 50%, transparent 100%);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(233, 69, 96, 0.2);
-            border: 1px solid var(--highlight);
-            border-radius: 30px;
+        .year-progress-label {
             font-size: 12px;
-            color: var(--highlight);
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .year-progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .year-progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .year-progress-text {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 核心数据看板 */
+        .stats-section {
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-size: 48px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 20px;
         }
 
-        .section-desc {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .profile-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 60px;
+        .stats-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
-        .profile-avatar {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .profile-avatar::before {
-            content: '';
-            position: absolute;
-            inset: 5px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .profile-avatar span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-info h3 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .profile-role {
-            font-size: 18px;
-            color: var(--highlight);
-            margin-bottom: 30px;
-        }
-
-        .profile-bio {
-            font-size: 16px;
-            color: var(--text-muted);
-            line-height: 2;
-            margin-bottom: 30px;
-        }
-
-        .profile-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .profile-tag {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--text-muted);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* 2026目标 */
-        .goals-section {
-            padding: 120px 0;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--highlight), var(--gold));
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 50%;
-            position: relative;
-            margin-bottom: 80px;
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-start;
-            padding-right: 0;
-            padding-left: 50%;
-        }
-
-        .timeline-content {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 450px;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            border-color: var(--highlight);
-            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--highlight);
-            border-radius: 50%;
-            top: 50px;
-            right: -60px;
-            border: 4px solid var(--primary);
-        }
-
-        .timeline-item:nth-child(even) .timeline-dot {
-            right: auto;
-            left: -60px;
-        }
-
-        .timeline-date {
-            font-size: 14px;
-            color: var(--highlight);
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .timeline-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .timeline-desc {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        .timeline-progress {
-            margin-top: 20px;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .timeline-progress-bar {
-            height: 100%;
-            background: var(--gradient-1);
-            border-radius: 3px;
-            transition: width 1s ease;
-        }
-
-        /* 未来展望 */
-        .future-section {
-            padding: 120px 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(15, 52, 96, 0.3) 100%);
-        }
-
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .vision-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vision-card::before {
+        .stat-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.4s;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .vision-card:hover::before {
-            transform: scaleX(1);
+        .stat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
         }
 
-        .vision-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255,255,255,0.2);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
-        .vision-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-change {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* 关键指标 */
+        .metrics-section {
+            margin-bottom: 60px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            margin-bottom: 25px;
-        }
-
-        .vision-card:nth-child(1) .vision-icon { background: var(--gradient-1); }
-        .vision-card:nth-child(2) .vision-icon { background: var(--gradient-2); }
-        .vision-card:nth-child(3) .vision-icon { background: var(--gradient-3); }
-        .vision-card:nth-child(4) .vision-icon { background: var(--gradient-4); }
-        .vision-card:nth-child(5) .vision-icon { background: var(--gradient-5); }
-
-        .vision-title {
             font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 15px;
         }
 
-        .vision-desc {
-            font-size: 15px;
+        .metric-icon.running { 
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .metric-icon.weight { 
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .metric-icon.fitness { 
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .metric-icon.money { 
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .metric-info h4 {
+            font-size: 12px;
+            font-weight: 500;
             color: var(--text-muted);
-            line-height: 1.8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .vision-tags {
+        .metric-info p {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* 目标分类 */
+        .goals-section {
+            margin-bottom: 60px;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .goal-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .goal-category:hover {
+            border-color: var(--border-hover);
+        }
+
+        .category-header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
         }
 
-        .vision-tag {
-            padding: 6px 12px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
+        .category-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .goal-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .goal-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .goal-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .goal-status {
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .goal-status.todo {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+        }
+
+        .goal-status.doing {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .goal-status.done {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .goal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .goal-deadline {
             font-size: 12px;
             color: var(--text-muted);
         }
 
-        /* 页脚 */
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-text {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .footer-highlight {
-            color: var(--highlight);
+        .goal-progress-text {
+            font-size: 13px;
             font-weight: 600;
+            color: #22c55e;
+        }
+
+        .goal-progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .goal-progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* 月度回顾 */
+        .months-section {
+            margin-bottom: 60px;
+        }
+
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        .month-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .month-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .month-card.current {
+            border-color: #22c55e;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05));
+        }
+
+        .month-card.current::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            height: 3px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            border-radius: 14px 14px 0 0;
+        }
+
+        .month-card.past {
+            opacity: 0.8;
+        }
+        
+        .month-card.past .month-tasks {
+            color: var(--text-secondary);
+        }
+
+        .month-name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .month-tasks {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .month-status {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 12px;
+        }
+
+        .month-status.done { background: var(--success); box-shadow: 0 0 8px var(--success); }
+        .month-status.doing { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.3); }
+        .month-status.todo { background: var(--border); }
+
+        /* 年度感悟 */
+        .notes-section {
+            margin-bottom: 60px;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .note-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .note-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .note-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note-item {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .note-item:last-child {
+            border-bottom: none;
+        }
+
+        .note-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-family: 'Courier New', monospace;
         }
 
         /* 响应式 */
         @media (max-width: 1024px) {
-            .hero-content h1 { font-size: 48px; }
-            .profile-card { grid-template-columns: 1fr; text-align: center; }
-            .profile-avatar { margin: 0 auto; }
-            .timeline::before { left: 30px; }
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                padding-left: 80px;
-                padding-right: 0;
-                justify-content: flex-start;
+            .stats-grid,
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .timeline-dot,
-            .timeline-item:nth-child(even) .timeline-dot {
-                left: 20px;
-                right: auto;
+
+            .goals-grid,
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .months-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
-            .nav-links { display: none; }
-            .container { padding: 0 20px; }
-            .hero-content h1 { font-size: 36px; }
-            .hero-stats { flex-direction: column; gap: 30px; }
-            .section-title { font-size: 32px; }
-            .vision-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 640px) {
+            .header {
+                flex-direction: column;
+                gap: 28px;
+            }
 
-        /* 滚动动画 */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
+            .header-left h1 {
+                font-size: 32px;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .header-right {
+                text-align: left;
+                width: 100%;
+            }
+
+            .year-progress-card {
+                min-width: auto;
+            }
+
+            .stats-grid,
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .months-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
-    <nav>
-        <div class="container">
-            <div class="logo">ZHANG DAPANG</div>
-            <ul class="nav-links">
-                <li><a href="#profile">个人介绍</a></li>
-                <li><a href="#goals">2026目标</a></li>
-                <li><a href="#future">未来展望</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>2026 · 年度目标规划</h1>
-            <p class="subtitle">用一年时间，成为更好的自己</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">33</div>
-                    <div class="stat-label">当前年龄</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">年度目标</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">未来愿景</div>
+    <div class="bg-glow"></div>
+    
+    <div class="container">
+        <!-- 顶部概览 -->
+        <header class="header">
+            <div class="header-left">
+                <h1>2026 年度计划</h1>
+                <p>成为更好的自己 · 技术 + 健康 + 财富 + 成长</p>
+            </div>
+            <div class="header-right">
+                <div class="year-progress-card">
+                    <div class="year-progress-label">年度进度</div>
+                    <div class="year-progress-bar">
+                        <div class="year-progress-fill" style="width: 18%;"></div>
+                    </div>
+                    <div class="year-progress-text">18%</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section class="profile-section" id="profile">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">About Me</span>
-                <h2 class="section-title">个人介绍</h2>
-                <p class="section-desc">一个不断追求进步的Java工程师，用技术和汗水书写人生</p>
-            </div>
-
-            <div class="profile-card fade-in">
-                <div class="profile-avatar">
-                    <span>🎯</span>
+        <!-- 核心数据 -->
+        <section class="stats-section">
+            <h2 class="section-title">概览</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">已完成目标</div>
+                    <div class="stat-value">2</div>
+                    <div class="stat-change">持续前进</div>
                 </div>
-                <div class="profile-info">
-                    <h3>张大胖</h3>
-                    <p class="profile-role">高级Java开发工程师 · 杭州</p>
-                    <p class="profile-bio">
-                        33岁，定居杭州，拥有多年Java开发和架构设计经验。热爱技术，追求极致，
-                        同时注重身体健康和个人成长。2026年，我希望在专业技能、身体素质、
-                        财务管理和思想深度上全面提升，为未来的人生打下坚实基础。
-                    </p>
-                    <div class="profile-tags">
-                        <span class="profile-tag">Java专家</span>
-                        <span class="profile-tag">架构设计</span>
-                        <span class="profile-tag">马拉松跑者</span>
-                        <span class="profile-tag">终身学习者</span>
-                        <span class="profile-tag">铲屎官</span>
+                <div class="stat-card">
+                    <div class="stat-label">进行中</div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-change">稳步推进</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">未开始</div>
+                    <div class="stat-value">3</div>
+                    <div class="stat-change">等待时机</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">总目标数</div>
+                    <div class="stat-value">10</div>
+                    <div class="stat-change">年度规划</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关键指标 -->
+        <section class="metrics-section">
+            <h2 class="section-title">关键指标</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon running">🏃</div>
+                    <div class="metric-info">
+                        <h4>年度跑量</h4>
+                        <p>150 / 1000 km</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon weight">⚖️</div>
+                    <div class="metric-info">
+                        <h4>体重管理</h4>
+                        <p>145 / 166 → 130 斤</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon fitness">💪</div>
+                    <div class="metric-info">
+                        <h4>健身次数</h4>
+                        <p>10 / 100 次</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon money">💰</div>
+                    <div class="metric-info">
+                        <h4>攒钱进度</h4>
+                        <p>0 / 10 万</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="goals-section" id="goals">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">2026 Goals</span>
-                <h2 class="section-title">2026年度目标</h2>
-                <p class="section-desc">四大核心目标，塑造更好的自己</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026.03.22</span>
-                        <h3 class="timeline-title">🏃 半程马拉松</h3>
-                        <p class="timeline-desc">
-                            完成人生首场半程马拉松比赛，挑战21.0975公里。
-                            通过系统训练提升体能，培养坚韧意志。
-                        </p>
-                        <div class="timeline-progress">
-                            <div class="timeline-progress-bar" style="width: 85%"></div>
+        <!-- 目标分类 -->
+        <section class="goals-section">
+            <h2 class="section-title">目标分类</h2>
+            <div class="goals-grid">
+                <!-- 事业工作 -->
+                <div class="goal-category">
+                    <div class="category-header">
+                        <div class="category-icon" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.1)); border: 1px solid rgba(34, 197, 94, 0.3);">💼</div>
+                        <div class="category-title">事业 / 工作</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">通过高级信息系统项目管理师认证</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">截止 2026.05.22</span>
+                            <span class="goal-progress-text">30%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 30%;"></div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026.05.22</span>
-                        <h3 class="timeline-title">📚 专业认证</h3>
-                        <p class="timeline-desc">
-                            通过高级信息系统项目管理师考试，提升项目管理能力，
-                            为职业发展增添重要筹码。
-                        </p>
-                        <div class="timeline-progress">
-                            <div class="timeline-progress-bar" style="width: 60%"></div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">启动技术咨询副业</span>
+                            <span class="goal-status todo">未开始</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">启动 2026.06</span>
+                            <span class="goal-progress-text">0%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 0%;"></div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026.02</span>
-                        <h3 class="timeline-title">💰 财务目标</h3>
-                        <p class="timeline-desc">
-                            完成10万元储蓄目标，为2027年的更大计划做准备。
-                            培养良好的理财习惯，实现财务自由的第一步。
-                        </p>
-                        <div class="timeline-progress">
-                            <div class="timeline-progress-bar" style="width: 45%"></div>
+                <!-- 财务理财 -->
+                <div class="goal-category">
+                    <div class="category-header">
+                        <div class="category-icon" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(5, 150, 105, 0.1)); border: 1px solid rgba(34, 197, 94, 0.3);">💰</div>
+                        <div class="category-title">财务 / 理财</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">攒够 10 万元</span>
+                            <span class="goal-status todo">未开始</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">截止 2027.02.05</span>
+                            <span class="goal-progress-text">0%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 0%;"></div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026.06</span>
-                        <h3 class="timeline-title">💼 副业启动</h3>
-                        <p class="timeline-desc">
-                            开启技术咨询和项目外包副业，目标时薪800-1500元，
-                            单项目2-5万，拓展收入来源。
-                        </p>
-                        <div class="timeline-progress">
-                            <div class="timeline-progress-bar" style="width: 30%"></div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">副业收入突破 5 万</span>
+                            <span class="goal-status todo">未开始</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">目标 2026.12</span>
+                            <span class="goal-progress-text">0%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 0%;"></div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
+                </div>
+
+                <!-- 学习成长 -->
+                <div class="goal-category">
+                    <div class="category-header">
+                        <div class="category-icon" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.1)); border: 1px solid rgba(34, 197, 94, 0.3);">📚</div>
+                        <div class="category-title">学习 / 成长</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">阅读 12 本书</span>
+                            <span class="goal-status todo">未开始</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">每月 1 本 · 已看 0</span>
+                            <span class="goal-progress-text">0%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">认真经营小红书</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">已完成 1 个 side project</span>
+                            <span class="goal-progress-text">33%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 33%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 生活健康 -->
+                <div class="goal-category">
+                    <div class="category-header">
+                        <div class="category-icon" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.1)); border: 1px solid rgba(34, 197, 94, 0.3);">🏃</div>
+                        <div class="category-title">生活 / 健康</div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">年度跑量 1000km</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">当前 150km</span>
+                            <span class="goal-progress-text">15%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 15%;"></div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">完成半程马拉松</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">比赛日 2026.03.22</span>
+                            <span class="goal-progress-text">85%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">体重减至 130 斤</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">当前 145 斤</span>
+                            <span class="goal-progress-text">61%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 61%;"></div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">健身 100 次</span>
+                            <span class="goal-status doing">进行中</span>
+                        </div>
+                        <div class="goal-meta">
+                            <span class="goal-deadline">已完成 10 次</span>
+                            <span class="goal-progress-text">10%</span>
+                        </div>
+                        <div class="goal-progress-bar">
+                            <div class="goal-progress-fill" style="width: 10%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="future-section" id="future">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Future Vision</span>
-                <h2 class="section-title">未来展望</h2>
-                <p class="section-desc">五年后的我，将成为什么样的人</p>
-            </div>
-
-            <div class="vision-grid">
-                <div class="vision-card fade-in">
-                    <div class="vision-icon">🏃</div>
-                    <h3 class="vision-title">成为专业跑者</h3>
-                    <p class="vision-desc">
-                        持续精进跑步能力，从半马到全马，不断突破自我极限。
-                        通过各类比赛验证训练成果，在跑步领域建立专业认知和竞技能力。
-                    </p>
-                    <div class="vision-tags">
-                        <span class="vision-tag">马拉松</span>
-                        <span class="vision-tag">竞技</span>
-                        <span class="vision-tag">突破</span>
-                    </div>
+        <!-- 月度回顾 -->
+        <section class="months-section">
+            <h2 class="section-title">月度回顾</h2>
+            <div class="months-grid">
+                <div class="month-card past">
+                    <div class="month-name">1月</div>
+                    <div class="month-tasks">年度计划制定</div>
+                    <span class="month-status done"></span>
                 </div>
-
-                <div class="vision-card fade-in">
-                    <div class="vision-icon">💪</div>
-                    <h3 class="vision-title">八块腹肌的身材</h3>
-                    <p class="vision-desc">
-                        通过持续的运动锻炼，打造健康强壮的体魄。不仅是为了外表，
-                        更是为了拥有充沛的精力应对工作和生活的挑战。
-                    </p>
-                    <div class="vision-tags">
-                        <span class="vision-tag">健身</span>
-                        <span class="vision-tag">运动</span>
-                        <span class="vision-tag">自律</span>
-                    </div>
+                <div class="month-card past">
+                    <div class="month-name">2月</div>
+                    <div class="month-tasks">家庭难事解决</div>
+                    <span class="month-status done"></span>
                 </div>
-
-                <div class="vision-card fade-in">
-                    <div class="vision-icon">💎</div>
-                    <h3 class="vision-title">年入百万</h3>
-                    <p class="vision-desc">
-                        通过专业技能提升和副业拓展，实现年收入100万的目标。
-                        技术咨询、项目外包、知识付费多管齐下。
-                    </p>
-                    <div class="vision-tags">
-                        <span class="vision-tag">财务自由</span>
-                        <span class="vision-tag">副业</span>
-                        <span class="vision-tag">专业提升</span>
-                    </div>
+                <div class="month-card current">
+                    <div class="month-name">3月</div>
+                    <div class="month-tasks">半马比赛 + 开发工具</div>
+                    <span class="month-status doing"></span>
                 </div>
-
-                <div class="vision-card fade-in">
-                    <div class="vision-icon">📖</div>
-                    <h3 class="vision-title">思想层面的丰富</h3>
-                    <p class="vision-desc">
-                        广泛阅读，深度思考，建立完整的世界观和价值观。
-                        不仅要做技术专家，更要做有思想深度的人。
-                    </p>
-                    <div class="vision-tags">
-                        <span class="vision-tag">阅读</span>
-                        <span class="vision-tag">思考</span>
-                        <span class="vision-tag">哲学</span>
-                    </div>
+                <div class="month-card">
+                    <div class="month-name">4月</div>
+                    <div class="month-tasks">备考冲刺 + 搬家</div>
+                    <span class="month-status todo"></span>
                 </div>
-
-                <div class="vision-card fade-in">
-                    <div class="vision-icon">👔</div>
-                    <h3 class="vision-title">独当一面的专家</h3>
-                    <p class="vision-desc">
-                        在专业技术和管理知识上达到独当一面的水平，
-                        能够带领团队，承担重要项目，成为行业内的权威。
-                    </p>
-                    <div class="vision-tags">
-                        <span class="vision-tag">技术专家</span>
-                        <span class="vision-tag">管理能力</span>
-                        <span class="vision-tag">领导力</span>
-                    </div>
+                <div class="month-card">
+                    <div class="month-name">5月</div>
+                    <div class="month-tasks">考试</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">6月</div>
+                    <div class="month-tasks">副业启动</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">7月</div>
+                    <div class="month-tasks">副业拓展</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">8月</div>
+                    <div class="month-tasks">技能提升</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">9月</div>
+                    <div class="month-tasks">项目攻坚</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">10月</div>
+                    <div class="month-tasks">收入冲刺</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">11月</div>
+                    <div class="month-tasks">年度总结</div>
+                    <span class="month-status todo"></span>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">12月</div>
+                    <div class="month-tasks">规划2027</div>
+                    <span class="month-status todo"></span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p class="footer-text">
-                2026 · 张大胖的年度目标规划 · 用一年时间 <span class="footer-highlight">成为更好的自己</span>
-            </p>
-        </div>
-    </footer>
+        <!-- 年度感悟 -->
+        <section class="notes-section">
+            <h2 class="section-title">年度感悟</h2>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-title">🙏 感恩日记</div>
+                    <div class="note-item">
+                        <div class="note-date">2026.03.11</div>
+                        梳理2026年目标，重新设计计划页面，精益求精长期使用
+                    </div>
+                    <div class="note-item">
+                        <div class="note-date">2026.03.10</div>
+                        开发小游戏成功，自动化部署GitHub，分享给朋友
+                    </div>
+                    <div class="note-item">
+                        <div class="note-date">2026.03.04</div>
+                        Cursor Pro激活成功，每天都有进步
+                    </div>
+                    <div class="note-item">
+                        <div class="note-date">2026.03.03</div>
+                        晨跑成功，选择难但正确的路
+                    </div>
+                    <div class="note-item">
+                        <div class="note-date">2026.02.28</div>
+                        感谢伴侣的默默支持，做好领头羊
+                    </div>
+                    <div class="note-item">
+                        <div class="note-date">2026.02.07</div>
+                        家庭难事彻底解决，遇事先整理思路
+                    </div>
+                </div>
 
-    <script>
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+                <div class="note-card">
+                    <div class="note-title">💡 待改进</div>
+                    <div class="note-item">• 减少拖延，立即行动</div>
+                    <div class="note-item">• 情绪管理，心平气和解决问题</div>
+                    <div class="note-item">• 规律作息，保证睡眠质量</div>
+                    <div class="note-item">• 持续学习，保持技术敏感度</div>
+                    <div class="note-item">• 多陪伴家人，平衡工作与生活</div>
+                </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // 数字动画
-        function animateNumbers() {
-            const numbers = document.querySelectorAll('.stat-number');
-            numbers.forEach(num => {
-                const target = parseInt(num.textContent);
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        num.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        num.textContent = Math.floor(current);
-                    }
-                }, 30);
-            });
-        }
-
-        // 页面加载完成后执行数字动画
-        window.addEventListener('load', animateNumbers);
-    </script>
+                <div class="note-card">
+                    <div class="note-title">🎯 明年展望</div>
+                    <div class="note-item">• 完成首个全程马拉松</div>
+                    <div class="note-item">• 副业收入稳定月入过万</div>
+                    <div class="note-item">• 考取更多专业认证</div>
+                    <div class="note-item">• 带领小团队做项目</div>
+                    <div class="note-item">• 实现财务自由第一步</div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
