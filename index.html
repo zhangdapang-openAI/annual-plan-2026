@@ -555,8 +555,8 @@
         }
 
         .notes-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
 
@@ -664,10 +664,10 @@
             line-height: 1.6;
         }
 
-        /* 右侧双栏 */
-        .notes-right {
-            display: flex;
-            flex-direction: column;
+        /* 下方双栏 */
+        .notes-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
@@ -760,12 +760,24 @@
             .months-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .notes-bottom {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 640px) {
             .header {
                 flex-direction: column;
                 gap: 28px;
+            }
+
+            .notes-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-text {
+                font-size: 13px;
             }
 
             .header-left h1 {
@@ -1190,8 +1202,8 @@
                     </div>
                 </div>
 
-                <!-- 右侧双栏 -->
-                <div class="notes-right">
+                <!-- 下方双栏 -->
+                <div class="notes-bottom">
                     <!-- 待改进 -->
                     <div class="note-small-card">
                         <div class="note-header">
