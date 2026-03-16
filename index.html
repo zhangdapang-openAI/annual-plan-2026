@@ -554,13 +554,14 @@
             margin-bottom: 60px;
         }
 
-        .notes-grid {
+        .notes-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 20px;
         }
 
-        .note-card {
+        /* 时间轴卡片 */
+        .note-timeline-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
@@ -568,38 +569,180 @@
             transition: all 0.3s ease;
         }
 
-        .note-card:hover {
+        .note-timeline-card:hover {
             border-color: var(--border-hover);
         }
 
-        .note-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+        .note-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .note-item {
+        .note-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.08));
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .note-title {
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .note-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.5), rgba(34, 197, 94, 0.1));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -15px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+        }
+
+        .timeline-item:first-child .timeline-dot {
+            background: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+
+        .timeline-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
             font-size: 14px;
             color: var(--text-secondary);
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
             line-height: 1.6;
         }
 
-        .note-item:last-child {
-            border-bottom: none;
+        /* 右侧双栏 */
+        .notes-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .note-date {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            font-family: 'Courier New', monospace;
+        .note-small-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .note-small-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .note-small-card .note-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+        }
+
+        /* 待改进清单 */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .checklist-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            margin-top: 1px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .checklist-item:hover .checklist-checkbox {
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        /* 目标列表 */
+        .goal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .goal-list-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .goal-list-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         /* 响应式 */
@@ -986,51 +1129,128 @@
         <!-- 年度感悟 -->
         <section class="notes-section">
             <h2 class="section-title">年度感悟</h2>
-            <div class="notes-grid">
-                <div class="note-card">
-                    <div class="note-title">🙏 感恩日记</div>
-                    <div class="note-item">
-                        <div class="note-date">2026.03.14</div>
-                        高效率找到满意的81平新房，3月28日开始搬家
+            <div class="notes-container">
+                <!-- 感恩日记 - 时间轴设计 -->
+                <div class="note-timeline-card">
+                    <div class="note-header">
+                        <div class="note-icon">🙏</div>
+                        <div class="note-title">感恩日记</div>
+                        <div class="note-count">6 篇</div>
                     </div>
-                    <div class="note-item">
-                        <div class="note-date">2026.03.11</div>
-                        梳理2026年目标，重新设计计划页面，精益求精长期使用
-                    </div>
-                    <div class="note-item">
-                        <div class="note-date">2026.03.10</div>
-                        开发小游戏成功，自动化部署GitHub，分享给朋友
-                    </div>
-                    <div class="note-item">
-                        <div class="note-date">2026.03.04</div>
-                        Cursor Pro激活成功，每天都有进步
-                    </div>
-                    <div class="note-item">
-                        <div class="note-date">2026.03.03</div>
-                        晨跑成功，选择难但正确的路
-                    </div>
-                    <div class="note-item">
-                        <div class="note-date">2026.02.28</div>
-                        感谢伴侣的默默支持，做好领头羊
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.16</div>
+                                <div class="timeline-text">和小胖深度对话，彼此真诚信任，关系更进一步</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.14</div>
+                                <div class="timeline-text">高效率找到满意的81平新房，3月28日开始搬家</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.11</div>
+                                <div class="timeline-text">梳理2026年目标，重新设计计划页面，精益求精长期使用</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.10</div>
+                                <div class="timeline-text">开发小游戏成功，自动化部署GitHub，分享给朋友</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.04</div>
+                                <div class="timeline-text">Cursor Pro激活成功，每天都有进步</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.03.03</div>
+                                <div class="timeline-text">晨跑成功，选择难但正确的路</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2026.02.28</div>
+                                <div class="timeline-text">感谢伴侣的默默支持，做好领头羊</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="note-card">
-                    <div class="note-title">💡 待改进</div>
-                    <div class="note-item">• 减少拖延，立即行动</div>
-                    <div class="note-item">• 情绪管理，心平气和解决问题</div>
-                    <div class="note-item">• 规律作息，保证睡眠质量</div>
-                    <div class="note-item">• 持续学习，保持技术敏感度</div>
-                    <div class="note-item">• 多陪伴家人，平衡工作与生活</div>
-                </div>
+                <!-- 右侧双栏 -->
+                <div class="notes-right">
+                    <!-- 待改进 -->
+                    <div class="note-small-card">
+                        <div class="note-header">
+                            <div class="note-icon">💡</div>
+                            <div class="note-title">待改进</div>
+                        </div>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <div class="checklist-checkbox"></div>
+                                <span>减少拖延，立即行动</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-checkbox"></div>
+                                <span>情绪管理，心平气和解决问题</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-checkbox"></div>
+                                <span>规律作息，保证睡眠质量</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-checkbox"></div>
+                                <span>持续学习，保持技术敏感度</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-checkbox"></div>
+                                <span>多陪伴家人，平衡工作与生活</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="note-card">
-                    <div class="note-title">🎯 明年展望</div>
-                    <div class="note-item">• 完成首个全程马拉松</div>
-                    <div class="note-item">• 副业收入稳定月入过万</div>
-                    <div class="note-item">• 考取更多专业认证</div>
-                    <div class="note-item">• 带领小团队做项目</div>
-                    <div class="note-item">• 实现财务自由第一步</div>
+                    <!-- 明年展望 -->
+                    <div class="note-small-card">
+                        <div class="note-header">
+                            <div class="note-icon">🎯</div>
+                            <div class="note-title">明年展望</div>
+                        </div>
+                        <div class="goal-list">
+                            <div class="goal-list-item">
+                                <div class="goal-list-icon">🏃</div>
+                                <span>完成首个全程马拉松</span>
+                            </div>
+                            <div class="goal-list-item">
+                                <div class="goal-list-icon">💰</div>
+                                <span>副业收入稳定月入过万</span>
+                            </div>
+                            <div class="goal-list-item">
+                                <div class="goal-list-icon">📜</div>
+                                <span>考取更多专业认证</span>
+                            </div>
+                            <div class="goal-list-item">
+                                <div class="goal-list-icon">👥</div>
+                                <span>带领小团队做项目</span>
+                            </div>
+                            <div class="goal-list-item">
+                                <div class="goal-list-icon">🚀</div>
+                                <span>实现财务自由第一步</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
