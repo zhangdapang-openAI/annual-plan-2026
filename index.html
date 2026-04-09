@@ -79,7 +79,40 @@
         }
 
         /* 顶部概览 */
-        .header {
+        
+        .year-progress-full {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .year-progress-full .year-progress-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .year-progress-full .year-progress-bar {
+            flex: 1;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .year-progress-full .year-progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        .year-progress-full .year-progress-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #22c55e;
+            white-space: nowrap;
+        }
+.header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -813,16 +846,14 @@
                 <h1>2026 年度计划</h1>
                 <p>成为更好的自己 · 技术 + 健康 + 财富 + 成长</p>
             </div>
-            <div class="header-right">
-                <div class="year-progress-card">
-                    <div class="year-progress-label">年度进度</div>
-                    <div class="year-progress-bar">
-                        <div class="year-progress-fill" style="width: 100%;"></div>
-                    </div>
-                    <div class="year-progress-text">100%</div>
-                </div>
-            </div>
         </header>
+        <div class="year-progress-full">
+            <div class="year-progress-label">年度进度</div>
+            <div class="year-progress-bar">
+                <div class="year-progress-fill" style="width: 24%;"></div>
+            </div>
+            <div class="year-progress-text">24%</div>
+        </div>
 
         <!-- 关键指标 -->
         <section class="metrics-section">
