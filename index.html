@@ -299,7 +299,27 @@
         .metric-card.fitness::before { background: linear-gradient(90deg, #f59e0b, #22c55e); }
         .metric-card.money::before { background: linear-gradient(90deg, #22c55e, #10b981); }
 
-        .metric-header {
+        
+        .metric-icon-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .metric-icon {
+            font-size: 18px;
+        }
+        .metric-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+.metric-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -874,7 +894,7 @@
                 <!-- 年度跑量 --><!-- 年度跑量 -->
                 <div class="metric-card running">
                     <div class="metric-header">
-                        <div class="metric-icon">🏃</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">🏃</div><div class="metric-title">跑步</div></div>
                         <div class="metric-trend">↗️</div>
                     </div>
                     <div class="metric-body">
@@ -890,7 +910,7 @@
                 </div><!-- 马拉松 -->
                 <div class="metric-card marathon">
                     <div class="metric-header">
-                        <div class="metric-icon">🏃</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">🏃</div><div class="metric-title">跑步</div></div>
                         <div class="metric-trend">🎯</div>
                     </div>
                     <div class="metric-body">
@@ -906,7 +926,7 @@
                 </div><!-- 体重管理 -->
                 <div class="metric-card weight">
                     <div class="metric-header">
-                        <div class="metric-icon">⚖️</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">⚖️</div><div class="metric-title">体重</div></div>
                         <div class="metric-trend">↘️</div>
                     </div>
                     <div class="metric-body">
@@ -922,7 +942,7 @@
                 </div><!-- 健身次数 -->
                 <div class="metric-card fitness">
                     <div class="metric-header">
-                        <div class="metric-icon">💪</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">💪</div><div class="metric-title">健身</div></div>
                         <div class="metric-trend">↗️</div>
                     </div>
                     <div class="metric-body">
@@ -938,7 +958,7 @@
                 </div><!-- 攒钱进度 -->
                 <div class="metric-card money">
                     <div class="metric-header">
-                        <div class="metric-icon">💰</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">💰</div><div class="metric-title">攒钱</div></div>
                         <div class="metric-trend">➡️</div>
                     </div>
                     <div class="metric-body">
@@ -954,7 +974,7 @@
                 </div><!-- 高项考试 -->
                 <div class="metric-card exam">
                     <div class="metric-header">
-                        <div class="metric-icon">📝</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">📝</div><div class="metric-title">考试</div></div>
                         <div class="metric-trend">📚</div>
                     </div>
                     <div class="metric-body">
@@ -1004,7 +1024,7 @@
                 </div><!-- 阅读 -->
                 <div class="metric-card reading">
                     <div class="metric-header">
-                        <div class="metric-icon">📚</div>
+                        <div class="metric-icon-wrap"><div class="metric-icon">📚</div><div class="metric-title">阅读</div></div>
                         <div class="metric-trend">📖</div>
                     </div>
                     <div class="metric-body">
@@ -1017,7 +1037,11 @@
                         </div>
                         <div class="metric-percent">17%</div>
                     </div>
-                </div><!-- 月度回顾 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 月度回顾 -->
         <section class="months-section">
             <h2 class="section-title">月度回顾</h2>
             <div class="months-grid">
